@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleTest
 {
@@ -16,7 +12,7 @@ namespace ConsoleTest
 
     public class B : A
     {
-        public new string Test()
+        public string Test()
         {
             return "B";
         }
@@ -24,7 +20,7 @@ namespace ConsoleTest
 
     public class C : A
     {
-        public new string Test()
+        public string Test()
         {
             return "C";
         }
@@ -32,16 +28,14 @@ namespace ConsoleTest
 
     class Program
     {
-
-        public delegate int BinaryOp(int x, int y);
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             A a = new A();
             B b = new B();
             C c = new C();
             Console.WriteLine("----------Below is a with new B");
             Console.WriteLine(a.Test());
-           
+            C a = new B();
 
             Console.WriteLine(a.Test());
             Console.WriteLine(b.Test());
@@ -50,6 +44,5 @@ namespace ConsoleTest
             b.Test();
             Console.Read();
         }
-
     }
 }
