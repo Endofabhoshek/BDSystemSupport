@@ -3,53 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleTest
 {
-    public class A
-    {
-        public string Test()
-        {
-            return "A";
-        }
-    }
-
-    public class B : A
-    {
-        public new string Test()
-        {
-            return "B";
-        }
-    }
-
-    public class C : A
-    {
-        public new string Test()
-        {
-            return "C";
-        }
-    }
 
     class Program
     {
-
-        public delegate int BinaryOp(int x, int y);
-        static void Main(string[] args)
+        static void Maaaain(string[] args)
         {
-            A a = new A();
-            B b = new B();
-            C c = new C();
-            Console.WriteLine("----------Below is a with new B");
-            Console.WriteLine(a.Test());
-           
-
-            Console.WriteLine(a.Test());
-            Console.WriteLine(b.Test());
-            Console.WriteLine(c.Test());
-            Console.WriteLine(a.Test());
-            b.Test();
-            Console.Read();
+            string path = @"C:\Users\abhi\Downloads\StrangerThings\Coldplay";
+            if (Directory.Exists(path))
+            {
+                RenameFile(path);
+            }
         }
+
+        private static void RenameFile(string path)
+        {
+            int i = 1;
+            string[] files = Directory.GetFiles(path);
+            foreach (var item in files)
+            {
+                System.IO.File.Move(item, @"C:\Users\abhi\Downloads\StrangerThings\Coldplay\Coldplay" + i.ToString() + ".jpg");
+                i++;
+            }
+        }
+
+
 
     }
 }
